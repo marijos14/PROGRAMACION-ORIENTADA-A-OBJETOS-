@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Practica01y02 {
+public class POO_practica1y2 {
     public static void main(String[] args) {
         Scanner e = new Scanner(System.in);
         int opcion = 0;
