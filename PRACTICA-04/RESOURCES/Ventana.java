@@ -6,12 +6,14 @@ public class Ventana extends JFrame {
     Punto puntoA;
     Punto puntoB;
     double distancia;
+    Mensajes men;
     
-    public Ventana(Punto puntoA, Punto puntoB, double distancia) {
+    public Ventana(Punto puntoA, Punto puntoB, double distancia, Mensajes men) {
 
         this.puntoA = puntoA;
         this.puntoB = puntoB;
         this.distancia = distancia;
+        this.men = men;
 
         setTitle("Distancia entre dos puntos");
         setSize(300, 200);
@@ -23,8 +25,10 @@ public class Ventana extends JFrame {
         boton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String mensaje = "Punto A: " + puntoA.toString() + "\n" + "Punto B: " + puntoB.toString() + "\n" + "Distancia: " + distancia;
-                JOptionPane.showMessageDialog(null, mensaje);
+                //String mensaje = "Punto A: " + puntoA.toString() + "\n" + "Punto B: " + puntoB.toString() + "\n" + "Distancia: " + distancia;
+                //Mensajes men = new mensajes(puntoA, puntoB, distancia);
+                String m = men.mensajes(puntoA, puntoB, distancia);
+                JOptionPane.showMessageDialog(null, m);
             }
         });
 

@@ -8,8 +8,9 @@ public class Practica04 {
 
         Punto puntoA = new Punto(x1, y1);
         Punto puntoB = new Punto(x2, y2);
+        Mensajes men = new Mensajes();
 
-        Ventana ventana = new Ventana(puntoA, puntoB, distancia);
+        Ventana ventana = new Ventana(puntoA, puntoB, distancia, men);
         ventana.setVisible(true);
     }
 }
