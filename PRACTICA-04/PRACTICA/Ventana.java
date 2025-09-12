@@ -25,8 +25,6 @@ public class Ventana extends JFrame {
         boton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //String mensaje = "Punto A: " + puntoA.toString() + "\n" + "Punto B: " + puntoB.toString() + "\n" + "Distancia: " + distancia;
-                //Mensajes men = new mensajes(puntoA, puntoB, distancia);
                 String m = men.mensajes(puntoA, puntoB, distancia);
                 JOptionPane.showMessageDialog(null, m);
             }
