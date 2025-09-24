@@ -7,10 +7,10 @@ public class Mensajes {
         }
     public String mensaje() {
         if(dis1==dis2&&dis2==dis3){
-            return "tu triangulo es equilatero c:";
+            return "Tu triángulo es equilátero c:";
         }
         else{
-            return "tu triangulo no es equilatero D:";
+            return "Tu triángulo no es equilátero D:";
         }
 
     }   

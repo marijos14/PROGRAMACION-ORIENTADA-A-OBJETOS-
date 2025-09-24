@@ -5,7 +5,7 @@ public class Ventana extends JFrame {
     JButton boton;
      public Ventana(Mensajes men) {
 
-        setTitle("¿tu triangulo es equilatero?");
+        setTitle("¿Tu triángulo es equilátero?");
         setSize(300, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
