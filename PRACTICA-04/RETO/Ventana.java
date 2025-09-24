@@ -3,7 +3,24 @@ import java.awt.event.*;
 
 public class Ventana extends JFrame {
     JButton boton;
-    Punto punto1;
-    Punto punto2;
-    Punto punto3;
+     public Ventana(Mensajes men) {
+
+        setTitle("¿tu triangulo es equilatero?");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        boton = new JButton("Mostrar");
+
+        boton.addActionListener(new ActionListener() {
+            @Override
+        
+            public void actionPerformed(ActionEvent e) {
+                String m = men.mensaje();
+                JOptionPane.showMessageDialog(null, m);
+            }
+        });
+
+        add(boton);
+    }
 }
