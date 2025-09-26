@@ -1,8 +1,10 @@
+package mx.unam.fi.poo.p56;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Carrito {
-    private final List<Articulo> articulos; // Este atributo tiene que ser privado y final
+    private List<Articulo> articulos;
 
     public Carrito() {
         this.articulos = new ArrayList<>(); //Polimorismo
@@ -35,7 +37,8 @@ public class Carrito {
         return false;
     }
 
-    public void limpiar() {
+    public void limpiar() 
+    {
         articulos.clear();
     }
 
@@ -45,9 +48,20 @@ public class Carrito {
 
     public double getTotal() {
         double total = 0.0;
-        for (int i = 0; i < articulos.size(); i++) {
+        for (int i = 0; i < articulos.size(); i++) 
+        {
             total += articulos.get(i).getPrecio();
         }
         return total;
+    }
+
+    public int getNumeroArticulos()
+    {
+        return articulos.size();
+    }
+
+    public boolean getVacio()
+    {
+        return articulos.isEmpty();
     }
 }
