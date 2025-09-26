@@ -1,21 +1,34 @@
-public class Articulo {
-    private String nombre;
-    private double precio;
+ublic class Articulo {
+   private String nombre;
+   private double precio;
 
-    public Articulo(String nombre, double precio) {
-        this.nombre = nombre;
-        this.precio = precio;
+    public Articulo(String nombre, double precio) 
+    {
+        setNombre(nombre);
+        setPrecio(precio);
     }
 
-    public String getNombre() {
+    public void setNombre(String nombre)
+    {
+        this.nombre=nombre;
+    }
+    
+    public String getNombre()
+    {
         return nombre;
     }
 
-    public double getPrecio() {
+    public void setPrecio(double precio)
+    {
+        this.precio=precio;
+    }
+    public double getPrecio()
+    {
         return precio;
     }
 
-    public String toItemString() {
+    public String toItemString() 
+    {
         long cents = Math.round(precio * 100);
         String entero = String.valueOf(cents/100);
         int dec = (int)(cents % 100);
