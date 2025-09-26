@@ -1,4 +1,5 @@
-ublic class Articulo {
+package mx.unam.fi.poo.p56;
+public class Articulo {
    private String nombre;
    private double precio;
 
