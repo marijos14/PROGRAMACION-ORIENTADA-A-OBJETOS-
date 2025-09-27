@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Carrito {
-    private List<Articulo> articulos;
+    private final List<Articulo> articulos;
 
     public Carrito() {
-        this.articulos = new ArrayList<>(); //Polimorismo
+        this.articulos = new ArrayList<>();
     }
 
     public boolean agregar(Articulo a) {
@@ -37,8 +37,7 @@ public class Carrito {
         return false;
     }
 
-    public void limpiar() 
-    {
+    public void limpiar() {
         articulos.clear();
     }
 
@@ -55,13 +54,11 @@ public class Carrito {
         return total;
     }
 
-    public int getNumeroArticulos()
-    {
+    public int getNumeroArticulos() {
         return articulos.size();
     }
 
-    public boolean getVacio()
-    {
+    public boolean getVacio() {
         return articulos.isEmpty();
     }
 }
