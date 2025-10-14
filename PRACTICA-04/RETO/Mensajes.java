@@ -12,6 +12,5 @@ public class Mensajes {
         else{
             return "Tu triángulo no es equilátero D:";
         }
-
     }   
 }

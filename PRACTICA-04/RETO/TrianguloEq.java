@@ -14,7 +14,6 @@ public class TrianguloEq{
         Mensajes mens= new Mensajes(dis1, dis2, dis3);
         Ventana ventana = new Ventana(mens);
         ventana.setVisible(true);
-        
     }
 }
 //1.73205080757

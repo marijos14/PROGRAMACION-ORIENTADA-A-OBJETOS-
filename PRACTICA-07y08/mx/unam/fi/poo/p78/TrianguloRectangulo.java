@@ -1,42 +1,39 @@
 package mx.unam.fi.poo.p78;
+
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 
-public class TrianguloRectangulo extends Figura{
+public class TrianguloRectangulo extends Figura {
     private double base, altura;
 
-    public TrianguloRectangulo(double base, double altura)
-    {
+    public TrianguloRectangulo(double base, double altura) {
         setBase(base);
         setAltura(altura);
     }
+
     @Override 
-    public double area()
-    {
+    public double area() {
         return (base*altura/2);
     }
 
     @Override
-    public double perimetro()
-    {
+    public double perimetro() {
         return base + altura + Math.hypot(base, altura);
     }
 
-    public void setBase(double base)
-    {
+    public void setBase(double base) {
         this.base=base;
     }
-    public double getBase()
-    {
+
+    public double getBase() {
         return base;
     }
-    public void setAltura(double altura)
-    {
+
+    public void setAltura(double altura) {
         this.altura=altura;
     }
 
-    public double getAltura()
-    {
+    public double getAltura() {
         return this.altura;
     }
 

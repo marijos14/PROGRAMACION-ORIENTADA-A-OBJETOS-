@@ -1,8 +1,9 @@
 package mx.unam.fi.poo.p78;
+
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 
-public class Circulo extends Figura{
+public class Circulo extends Figura {
     private double radio;
     private static final double PI = Math.PI;
 
@@ -11,20 +12,19 @@ public class Circulo extends Figura{
     }
 
     @Override 
-    public double area()
-    {
+    public double area() {
         return PI*radio*radio;
     }
 
     @Override
-    public double perimetro()
-    {
+    public double perimetro() {
         return 2*PI*radio;
     }
 
     public double getRadio() {
         return radio;
     }
+    
     public void setRadio(double radio) {
         this.radio = radio;
     }

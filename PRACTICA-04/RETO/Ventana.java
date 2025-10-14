@@ -20,7 +20,6 @@ public class Ventana extends JFrame {
                 JOptionPane.showMessageDialog(null, m);
             }
         });
-
         add(boton);
     }
 }

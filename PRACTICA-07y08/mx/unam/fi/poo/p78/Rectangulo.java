@@ -1,44 +1,40 @@
 package mx.unam.fi.poo.p78;
+
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 
-public class Rectangulo extends Figura{
+public class Rectangulo extends Figura {
     private double ancho;
     private double alto;
 
-    public Rectangulo(double ancho, double alto) 
-    {
+    public Rectangulo(double ancho, double alto) {
         setAncho(ancho);
         setAlto(alto);
     }
     
     @Override 
-    public double area()
-    {
+    public double area() {
         return ancho*alto;
     }
 
     @Override 
-    public double perimetro()
-    {
+    public double perimetro() {
         return 2*(ancho+alto);
     }
 
-    public void setAlto(double alto)
-    {
+    public void setAlto(double alto) {
         this.alto=alto;
-    }  
-    public double getAlto()
-    {
+    }
+
+    public double getAlto() {
         return alto;
     }
 
-    public double getAncho() 
-    {
+    public double getAncho() {
         return ancho;
     }
-    public void setAncho(double ancho) 
-    {
+
+    public void setAncho(double ancho) {
         this.ancho = ancho;
     }
 
