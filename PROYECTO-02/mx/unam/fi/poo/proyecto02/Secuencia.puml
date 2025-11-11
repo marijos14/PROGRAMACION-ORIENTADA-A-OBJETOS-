@@ -1,0 +1,18 @@
+@startuml Secuencia
+
+actor Usuario
+participant MainApp
+participant EmpleadoAsalariado as Asal
+participant EmpleadoPorComision as Com
+
+Usuario -> MainApp : Inicia programa
+MainApp -> Asal : new EmpleadoAsalariado(datos de ejemplo)
+MainApp -> Asal : toString()
+Asal --> MainApp : devuelve los datos del empleado
+
+MainApp -> Com : new EmpleadoPorComision(datos de ejemplos)
+MainApp -> Com : toString()
+Com --> MainApp : devuelve los datos del empleado
+
+MainApp -> Usuario : Mostrar salida por consola
+@enduml

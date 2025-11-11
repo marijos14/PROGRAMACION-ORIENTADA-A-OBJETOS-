@@ -1,0 +1,41 @@
+@startuml Clases
+
+skinparam classAttributeIconSize 0
+
+package mx.unam.fi.poo.proyecto02 {
+    abstract class Empleado {
+        - nombre : String
+        - apellidoPaterno : String
+        - numSeguroSocial : String
+        + toString() : String
+        + ingresos() : double <<abstract>>
+    }
+
+    class EmpleadoAsalariado {
+        - salarioSemanal : double
+        + setSalarioSemanal(double) : void
+        + getSalarioSemanal() : double
+        + ingresos() : double
+        + toString() : String
+    }
+
+    class EmpleadoPorComision {
+        - tarifaComision : double
+        - ventasNetas : int
+        + setVentasNetas(int) : void
+        + setTarifaComision(double) : void
+        + getVentasNetas() : int
+        + getTarifaComision() : double
+        + ingresos() : double
+        + toString() : String
+    }
+
+    class MainApp {
+        + main(args:String[]) : void
+    }
+
+    Empleado <|-- EmpleadoAsalariado
+    Empleado <|-- EmpleadoPorComision
+    MainApp --> Empleado : "crea / usa"
+}
+@enduml
