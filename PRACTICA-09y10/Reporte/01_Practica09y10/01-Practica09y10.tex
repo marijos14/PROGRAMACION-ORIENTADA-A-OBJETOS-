@@ -1,0 +1,70 @@
+\documentclass[letterpaper,12pt,oneside]{article}
+
+\usepackage[top=1in, left=1.25in, right=1.25in, bottom=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-nodecimaldot,es-tabla]{babel}
+\usepackage{caption, subcaption}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{imakeidx}
+\usepackage[style=numeric]{biblatex}
+\usepackage{csquotes}
+\usepackage{placeins}
+\usepackage{float}
+\usepackage{setspace}
+
+\addbibresource{./bib/protocolo.bib}
+\graphicspath{./figs/}
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \includegraphics[width=1\textwidth]{Carátula reportes POO.pdf}
+\end{titlepage}
+
+\tableofcontents
+\clearpage
+
+\section{Introducción} %Este apartado debe abordar los siguientes puntos:
+
+\begin{itemize}
+    \item \textbf{Planteamiento del problema:}\\ %Se hace una descripción del problema a resolver.
+    
+    \item \textbf{Motivación:}\\ %Se describe por qué es necesario dar solución al problema.
+    
+    \item \textbf{Objetivos:}\\ %Lo que se espera obtener al darle solución al problema.
+    
+\end{itemize}
+
+\section{Marco Teórico} %Son los conceptos aplicados, principalmente los vistos en clase, con los que se va a dar solución al problema, explicados de forma concreta, ya sea con su interpretación personal o bien con referencias bibliográficas sólidas.
+
+\subsection*{Subtema 1}
+
+\subsection*{Subtema 2}
+
+\subsection*{Subtema 3}
+
+\subsection*{Subtema 4}
+
+\section{Desarrollo} %Es la descripción de la implementación realizada en el lenguaje de programación, así como las pruebas realizadas para obtener los resultados. No se debe mostrar código, solo describir funciones o la aplicación de los conceptos teóricos. Las pruebas es describir las entradas ingresadas y las salidas obtenidas.
+
+\subsection*{Clase 1}
+
+\subsection*{Clase 2}
+
+\subsection*{Clase 3}
+
+\subsection*{Clase 4}
+
+\subsection*{Diagrama de clases (UML estático)}
+
+\subsection*{Diagrama de secuencia (UML dinámico)}
+
+\section{Resultados} %Mediante capturas de pantalla y una breve descripción seguida de la captura se presentan los resultados finales de su aplicación.
+
+\section{Conclusiones} %Se presenta un análisis de los resultados obtenidos, donde se destaca la importancia de la aplicación de los conceptos teóricos para resolver el problema. No es describir si les gustó la actividad o no. No es decir qué se obtuvo de la práctica. No es describir lo que fue difícil.
+
+\printbibliography %Agregar las referencias en bib y mandarlas llamar en cada sección. Ejemplo de cita: ~\cite{10.5555/576122}
+\end{document}
