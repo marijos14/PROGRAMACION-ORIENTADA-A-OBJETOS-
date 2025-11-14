@@ -1,0 +1,9 @@
+Borrador conclusiones
+
+A diferencia de las prácticas anteriores, esta actividad supuso la migración de Java al ecosistema de Dart y Flutter, lo que permitió identificar similitudes y diferencias clave en la aplicación de los principios de la Programación Orientada a Objetos entre ambos lenguajes.
+
+El código proporcionado emplea principios fundamentales como las clases abstractas, interfaces, herencia y polimorfismo, lo cual permitió establecer una conexión directa con los conceptos teóricos abordados en clases, particularmente para el caso de las excepciones, se logró evidenciar lo esencial que resulta su uso en un programa para validar datos ingresados por el usuario y garantizar que se siga un flujo correcto de operaciones durante la ejecución de este, validaciones que se hacen desde la construcción de los objetos hasta en el menú de usuario.
+
+Además, como parte de la documentación de la práctica, los diagramas UML permitieron visualizar la estructura general del programa con el diagrama estático de clases y el flujo de interacción entre el programa y el usuario durante la ejecución con el diagrama dinámico de secuencia de una manera práctica e intuitiva. Esto demostró la utilidad del UML para la comprensión del diseño de software y reafirmó la importancia de mantener una documentación formal.
+
+Con esta práctica se pudo comprobar que los principios esenciales de la Programación Orientada a Objetos se mantienen constantes y aplicables, independientemente del lenguaje de programación utilizado.
