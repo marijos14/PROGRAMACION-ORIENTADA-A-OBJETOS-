@@ -42,26 +42,6 @@
 
 \section{Marco Teórico} %Son los conceptos aplicados, principalmente los vistos en clase, con los que se va a dar solución al problema, explicados de forma concreta, ya sea con su interpretación personal o bien con referencias bibliográficas sólidas.
 
-\subsection{Abstracción}
-La abstracción consiste en identificar las características esenciales de un objeto y omitir detalles que no son relevantes para el problema que se desea resolver. Esto nos permite diseñar clases que representan conceptos generales y establecer una base común para clases más específicas.
-
-\subsection{Encapsulamiento}
-El encapsulamiento es el mecanismo que protege los datos internos de un objeto, restringiendo su acceso mediante modificadores de visibilidad. En Dart, el prefijo ``\_'' indica que un atributo es privado a nivel de archivo. El uso de getters y setters permite validar datos y mantener la integridad de los valores asignados.
-
-\subsection{Herencia}
-La herencia permite crear nuevas clases basadas en una clase ya existente, reutilizando sus atributos y métodos. Gracias a este principio, las clases derivadas pueden extender o redefinir comportamientos. En este proyecto, \texttt{Auto}, \texttt{Moto} y \texttt{Camion} heredan de la clase abstracta \texttt{Vehiculo}.
-
-\subsection{Polimorfismo}
-El polimorfismo permite que distintas clases implementen métodos con el mismo nombre pero con comportamientos diferentes. Esto facilita procesar objetos heterogéneos de manera uniforme. En esta práctica, cada tipo de vehículo implementa su propia versión de los métodos \texttt{calcularServicio()} y \texttt{generarReporteServicio()}.
-
-\subsection{Interfaces}
-Una interfaz define un conjunto de métodos que una clase debe implementar sin especificar su comportamiento. En Dart, las interfaces ayudan a establecer contratos claros dentro del diseño del software. La interfaz \texttt{ServicioTaller} asegura que todos los vehículos posean los métodos necesarios para calcular costos y generar reportes.
-
-\subsection{Manejo de Excepciones}
-El manejo de excepciones permite identificar y gestionar errores durante la ejecución del programa. Dart ofrece mecanismos como \texttt{throw}, \texttt{try}, \texttt{catch} y \texttt{finally} para controlar situaciones inesperadas. En esta práctica, se utilizan para validar datos del usuario y evitar fallos en el flujo del programa.
-
-\subsection{UML (Lenguaje de Modelado Unificado)}
-El Lenguaje de Modelado Unificado (UML) es un estándar utilizado para representar visualmente la estructura y el comportamiento de un sistema. Los diagramas de clases muestran relaciones jerárquicas y atributos, mientras que los diagramas de secuencia representan la interacción dinámica entre objetos. Su uso facilita la documentación y comprensión del diseño del software. 
 
 
 \section{Desarrollo} %Es la descripción de la implementación realizada en el lenguaje de programación, así como las pruebas realizadas para obtener los resultados. No se debe mostrar código, solo describir funciones o la aplicación de los conceptos teóricos. Las pruebas es describir las entradas ingresadas y las salidas obtenidas.
