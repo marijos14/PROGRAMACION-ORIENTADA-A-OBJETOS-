@@ -40,33 +40,100 @@
     Interpretar el uso y el propósito específico del manejo de excepciones dentro de un programa, identificar las implementaciones de conceptos fundamentales de la Programación Orientada a Objetos en Dart, así como desarrollar diagramas UML (estático y dinámico) que faciliten la comprensión de la estructura del programa y como parte de la documentación formal del mismo, culminando así el proceso de migración de Java al ecosistema de Dart y Flutter.
 \end{itemize}
 
-\section{Marco Teórico} %Son los conceptos aplicados, principalmente los vistos en clase, con los que se va a dar solución al problema, explicados de forma concreta, ya sea con su interpretación personal o bien con referencias bibliográficas sólidas.
 
-\subsection*{Subtema 1}
-Hola
+\section{Marco Teórico}
 
-\subsection*{Subtema 2}
-Hola
+\subsection{Abstracción}
+La abstracción consiste en identificar las características esenciales de un objeto y omitir detalles que no son relevantes para el problema que se desea resolver. Esto nos permite diseñar clases que representan conceptos generales y establecer una base común para clases más específicas.
 
-\subsection*{Subtema 3}
-Hola
+\subsection{Encapsulamiento}
+El encapsulamiento es el mecanismo que protege los datos internos de un objeto, restringiendo su acceso mediante modificadores de visibilidad. En Dart, el prefijo ``\_'' indica que un atributo es privado a nivel de archivo. El uso de getters y setters permite validar datos y mantener la integridad de los valores asignados.
 
-\subsection*{Subtema 4}
-Hola
+\subsection{Herencia}
+La herencia permite crear nuevas clases basadas en una clase ya existente, reutilizando sus atributos y métodos. Gracias a este principio, las clases derivadas pueden extender o redefinir comportamientos. En este proyecto, \texttt{Auto}, \texttt{Moto} y \texttt{Camion} heredan de la clase abstracta \texttt{Vehiculo}.
+
+\subsection{Polimorfismo}
+El polimorfismo permite que distintas clases implementen métodos con el mismo nombre pero con comportamientos diferentes. Esto facilita procesar objetos heterogéneos de manera uniforme. En esta práctica, cada tipo de vehículo implementa su propia versión de los métodos \texttt{calcularServicio()} y \texttt{generarReporteServicio()}.
+
+\subsection{Interfaces}
+Una interfaz define un conjunto de métodos que una clase debe implementar sin especificar su comportamiento. En Dart, las interfaces ayudan a establecer contratos claros dentro del diseño del software. La interfaz \texttt{ServicioTaller} asegura que todos los vehículos posean los métodos necesarios para calcular costos y generar reportes.
+
+\subsection{Manejo de Excepciones}
+El manejo de excepciones permite identificar y gestionar errores durante la ejecución del programa. Dart ofrece mecanismos como \texttt{throw}, \texttt{try}, \texttt{catch} y \texttt{finally} para controlar situaciones inesperadas. En esta práctica, se utilizan para validar datos del usuario y evitar fallos en el flujo del programa.
+
+\subsection{UML (Lenguaje de Modelado Unificado)}
+El Lenguaje de Modelado Unificado (UML) es un estándar utilizado para representar visualmente la estructura y el comportamiento de un sistema. Los diagramas de clases muestran relaciones jerárquicas y atributos, mientras que los diagramas de secuencia representan la interacción dinámica entre objetos. Su uso facilita la documentación y comprensión del diseño del software.
 
 \section{Desarrollo} %Es la descripción de la implementación realizada en el lenguaje de programación, así como las pruebas realizadas para obtener los resultados. No se debe mostrar código, solo describir funciones o la aplicación de los conceptos teóricos. Las pruebas es describir las entradas ingresadas y las salidas obtenidas.
 
-\subsection*{Clase 1}
+La aplicación desarrollada dentro del paquete \texttt{mx.unam.fi.poo.p910} permite el registro, cotización y la generación de reportes de vehículos ingresados al sistema implementando los conceptos de herencia, polimorfismo, encapsulamiento y \texttt{manejo de errores}. Con el propósito de explicar la lógica y las herramientas usadas en cada parte del código el desarrollo se divide en estas secciones:
 
-\subsection*{Clase 2}
+\subsection{Clases}
+Las clases de la aplicación definen los métodos que se ocuparán dentro del sistema y determinan el tipo de vehículos que se pueden registrar.
 
-\subsection*{Clase 3}
+\subsubsection{ServicioTaller}
+\texttt{ServicioTaller} es una interfaz que define dos métodos importantes que cada clase que represente a un vehículo se verá obligada a definir. Los métodos en cuestión son \textbf{calcularServicio()} y \textbf{generarReporteServicio()}.
 
-\subsection*{Clase 4}
+\subsubsection{Vehiculo}
+\texttt{Vehiculo} es una clase abstracta que implementa la interfaz \texttt{ServicioTaller} y es la superclase encargada de heredar a las clases que definen cada tipo de vehículo. Los atributos que incorpora son \textbf{marca}, \textbf{modelo} y \textbf{anio}, y al tener un encapsulamiento a nivel de archivo denotado por "\_"\ usado como prefijo en los atributos, define sus getters y setters, haciendo uso del concepto de \texttt{manejo de errores} con \textbf{throw} para lanzar una excepción y detener el flujo del código implementando así validaciones en los setters que incluyen que \textbf{marca} y \textbf{modelo} no puedan ser vacíos y que \textbf{anio} no pueda ser menor a 1960, manteniendo así integridad y coherencia en los datos ingresados. Por último implementa le método \textbf{descripcion()} que devuelve los valores de los atributos ingresados.
+
+\subsubsection{Auto}
+\texttt{Auto} es una clase que extiende sus métodos y atributos de la clase \textbf{Vehiculo} añadiendo el atributo \textbf{\_tieneAireAcondicionado} donde "\_" marca que solo es accesible desde su archivo, por lo cual se crean getters y setters, además de sobreescribir el método \textbf{descripcion()} para agregar el nuevo atributo y definir los métodos \textbf{calcularServicio()} el cual calcula y regresa el total del monto a pagar sumando un precio base y un costo extra que depende de si tiene A/C y \textbf{generarReporteServicio()} que regresa en modo de cadena los atributos del vehículo y el monto a pagar.
+
+\subsubsection{Moto}
+\texttt{Moto} es una clase hija de \textbf{Vehiculo}, heredando así sus atributos y métodos, agregando un atributo de tipo entero \textbf{\_Cilindrada} para el cual se contruyen su get y set, añadiendo en el set un \textbf{throw} para lanzar un error y manejar el caso en que se quiera ingresar una clindrada negativa al sistema.\\
+
+Por otro lado los métodos que sobreescribe son \textbf{descripcion()} para agregar el nuevo atributo, \textbf{calcularServicio()} en el que se calcula y devuelve el monto total sumando una tarifa base y un costo extra que se suma en el caso de que la moto tenga arriba de 600 de cilindrada y \textbf{generarReporteServicio()} en el que se devuelven como String los atributos de la moto y el total a pagar.
+
+\subsubsection{Camion}
+\texttt{Camion} es una clase hija de \textbf{Vehiculo}, heredando sus métodos y atributos, añadiendo el atributo de tipo double \textbf{capacidadToneladas}, para el cual se designan sus respectivos get y set, incluyendo \textbf{throw} para arrojar un error en el caso de que se ingrese una capacidad negativa.\\
+
+Por otra parte los métodos que sobreescribe, al igual que en los clases anteriores, son \textbf{descripcion()} para añadir le atributo \textbf{capacidad} a la descricpión del vehículo, \textbf{calcularServicio()} para calcular y regresar el total a pagar, sumando un costo base más un extra que depende de que la capacidad del camión sea mayor a 10 toneladas y \textbf{generarReporteServicio()} que devuelve en forma de String los atributos del vehículo y el total a pagar.
+
+\subsection{Funciones}
+En el código se implementaron nueve funciones con diferentes propósitos que permiten una ejecución más limpia y organizada desde el main:\\ 
+
+Cuatro funciones se dedicaron a hacer más clara la lectura y captura de los distintos tipos de datos ingresados desde la interfaz de línea de comandos (CLI): \textbf{leerLinea()} que devuelve un String y en caso de ser NULL asigna un String vacío, \textbf{leerEntero()} se asegura de que se ingrese un entero convirtiendo la línea a entero con \texttt{tryParse} y haciendo un bucle con while hasta que se ingrese un valor válido, \textbf{leerDouble()} es el mismo caso de \textbf{leerEntero()} pero con double y por último \textbf{leerBoolSN()} que hace minúsculas las líneas ingresadas siendo que si es "s" devuelve verdadero, si es "n" devuelve falso y repite el proceso hasta que se ingrese alguna de esas dos opciones válidas.\\
+
+Por otra parte tres funciones tienen como objetivo la creación de objetos de los tres tipos de vehículos aceptados por el sistema: \textbf{crearAutoIntercativo()}, \textbf{crearMotoIntercativa()} y \textbf{crearCamionInteractivo()}, cada uno muestra la leyenda "\.Registro"\ y pide llenar los atributos correspondientes de cada tipo de vehículo, los captura con ayuda de las funciones anteriores y regresa un objeto de tipo vehículo con las especificaciones de cada objeto.\\
+
+Por último, hay dos funciones que cumplen el propósito de mostrar un listado básico y los reportes de todos lo vehículos ingresados al sistema, estas son \textbf{mostrarListadoBasico()} y \textbf{mostrarReportesDetallados()}, ambos son de tipo void y recorren una lista que se les entrega como argumento, pero la primera funcion imprime una descripcion más el monto a pagar, mientras que la segunda genera y muestra un reporte de cada objeto contenido en la lista.
+
+\subsection{Main}
+El Main o la función principal es donde todo toma forma y las opciones que puede realizar el usuario se estructuran en un \texttt{switch}:
+\begin{center}
+\begin{minipage}{0.3\textwidth}
+1)Registrar Auto\\
+2)Registrar Moto\\
+3)Registrar Camión\\
+4)Ver flotilla (resumen)\\
+5)Ver reportes detallados\\
+0)Salir\\
+\end{minipage}    
+\end{center}
+Las primeras tres opciones implementan un \textbf{try/catch} para manejo de errores, cada uno, dentro del \textbf{try}, genera un nuevo objeto vehículo con la ayuda de su función crear respectiva y se agrega a la lista \texttt{flotilla}, en caso de ser exitoso se manda un mensaje de confirmación, pero en caso de haber algún error, este se almacena en la variable e que es lanzada y manejada por el \textbf{catch} imprimiendo el error que no permitió el registro.\\
+
+Para las opciones 4) y 5) solo hacen uso de las funciones \textbf{mostrarListadoBasico()} y \textbf{mostrarReportesDetallados()}, implementando el concepto de polimorfismo pues dentro de estos métodos cada uno aplica su propia versión de \textbf{calcularServicio()} y \textbf{generarReporteServicio()}. Por último el programa termina una vez que el usuario decide presionar 0 en el menú para salir del sistema.
+
 
 \subsection*{Diagrama de clases (UML estático)}
-
+%Se presenta un diagrama de clases que modela la aplicacion de forma estática
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=1.05\linewidth]{PRACTICA-09y10/Reporte/Borradores/DiagramaClases.png}
+    \caption{UML:Diagrama de clases.}
+    \end{figure}
+    
 \subsection*{Diagrama de secuencia (UML dinámico)}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.1\linewidth]{PRACTICA-09y10/Reporte/Borradores/Diagrama dinamico.png}
+    \caption{UML: Diagrama de secuencia.}
+    \label{fig:diagrama-dinamico}
+\end{figure}
+
+
+
 
 \section{Resultados} %Mediante capturas de pantalla y una breve descripción seguida de la captura se presentan los resultados finales de su aplicación.
 \begin{figure} [H]
@@ -106,4 +173,25 @@ Esta práctica supuso la migración de Java al ecosistema de Dart y Flutter, lo 
 Además, como parte de la documentación de la práctica, los diagramas UML permitieron visualizar la estructura general del programa con el diagrama estático de clases y el flujo de interacción entre el programa y el usuario con el diagrama dinámico de secuencia de una manera práctica e intuitiva. Esto demostró la utilidad del UML para la comprensión del diseño de software y reafirmó la importancia de mantener una documentación formal en los proyectos.\\
 Con esta práctica se pudo comprobar que los principios esenciales de la Programación Orientada a Objetos se mantienen constantes y aplicables, independientemente del entorno utilizado.
 \printbibliography %Agregar las referencias en bib y mandarlas llamar en cada sección. Ejemplo de cita: ~\cite{10.5555/576122}
+\begin{thebibliography}{9}
+
+\bibitem{dart}
+Google Developers,
+\textit{Dart Language Tour}.
+Disponible en: \url{https://dart.dev/language}
+[Consultado: 13-nov-2025].
+
+\bibitem{uml}
+M. Fowler,
+\textit{UML Distilled: A Brief Guide to the Standard Object Modeling Language},
+3rd ed., Addison-Wesley, 2003.
+
+\bibitem{exception}
+D. van der Linden,
+\textit{Effective Dart: Usage}.
+Disponible en: \url{https://dart.dev/guides/language/effective-dart/usage}
+[Consultado: 13-nov-2025].
+
+\end{thebibliography}
+
 \end{document}
