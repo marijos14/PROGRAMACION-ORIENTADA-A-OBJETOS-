@@ -38,7 +38,40 @@
     Aplicar los conceptos de manejo de archivos para la persistencia de información y ejecutar procesos concurrentes mediante hilos para mejorar la eficiencia del sistema, así como identificar y modelar los patrones de diseño implementados en el código proporcionado. Además, reforzar la habilidad de documentar la arquitectura del software mediante la creación de Diagramas UML estáticos y dinámicos.
 \end{itemize}
 
-\section{Marco Teórico} %Son los conceptos aplicados, principalmente los vistos en clase, con los que se va a dar solución al problema, explicados de forma concreta, ya sea con su interpretación personal o bien con referencias bibliográficas sólidas.
+\section{Marco Teórico}
+
+En esta práctica vamos a aplicar tres conceptos muy importantes para el desarrollo de aplicaciones en Java: el manejo de archivos para guardar datos, el uso de hilos para hacer tareas al mismo tiempo y los patrones de diseño para organizar mejor nuestro código.
+
+\subsection{Archivos (Persistencia)}
+Normalmente, cuando cerramos un programa, todas las variables y datos que estaban en la memoria RAM se borran. Para evitar esto y que la información se quede guardada ("persistencia"), usamos archivos.
+
+En Java, esto se maneja principalmente con \textbf{Streams} (flujos de datos):
+\begin{itemize}
+    \item \textbf{Archivos de Texto:} Son los que podemos leer nosotros, como un \texttt{.txt}. Usamos clases como \texttt{FileReader} o \texttt{BufferedReader} para leer línea por línea.
+    \item \textbf{Archivos Binarios:} Guardan la información en bytes (unos y ceros). Son útiles para guardar objetos completos o imágenes.
+    \item \textbf{Serialización:} Es el proceso de convertir un objeto de Java en una secuencia de bytes para poder guardarlo en un archivo y recuperarlo después tal cual estaba.
+\end{itemize}
+
+\subsection{Hilos }
+Un hilo o \textit{thread} es la unidad básica de ejecución de un programa. Usar hilos nos permite hacer \textbf{multitarea}, es decir, que nuestro programa haga dos o más cosas a la vez (por ejemplo, mostrar una interfaz gráfica mientras descarga un archivo de fondo).
+
+Hay dos formas principales de crear hilos en Java:
+\begin{enumerate}
+    \item Heredando de la clase \texttt{Thread}: Creamos una clase que extienda a Thread y sobrescribimos el método \texttt{run()}.
+    \item Implementando la interfaz \texttt{Runnable}: Es la forma más recomendada. Nuestra clase implementa \texttt{Runnable} y definimos qué debe hacer el hilo en el método \texttt{run()}.
+\end{enumerate}
+
+Los hilos tienen un ciclo de vida: nacen, se ejecutan, a veces se pausan (esperan) y finalmente mueren cuando terminan su tarea.
+
+\subsection{Patrones de Diseño}
+Los patrones de diseño son como "recetas" o soluciones estándar para problemas que ocurren muy seguido al programar. Nos ayudan a que el código sea más ordenado y fácil de modificar. Se dividen en tres tipos:
+
+\begin{itemize}
+    \item \textbf{Creacionales:} Nos dicen cómo crear objetos de forma eficiente (Ejemplo: \textit{Singleton}, que asegura que solo exista una instancia de una clase).
+    \item \textbf{Estructurales:} Nos ayudan a conectar clases y objetos para formar estructuras más grandes (Ejemplo: \textit{Adapter}).
+    \item \textbf{De Comportamiento:} Se encargan de la comunicación entre objetos (Ejemplo: \textit{Observer}, que avisa a otros objetos cuando algo cambia).
+\end{itemize}
+
 
 \section{Desarrollo} %Es la descripción de la implementación realizada en el lenguaje de programación, así como las pruebas realizadas para obtener los resultados. No se debe mostrar código, solo describir funciones o la aplicación de los conceptos teóricos. Las pruebas es describir las entradas ingresadas y las salidas obtenidas.
 
@@ -52,6 +85,39 @@
 
 \subsection*{Diagrama de clases (UML estático)}
 %Se presenta un diagrama de clases que modela la aplicacion de forma estática
+
+\subsection*{Diagrama de secuencia (UML dinámico)}
+%Se presenta un diagrama de secuencia que modela la aplicacion de forma dinamica
+\vspace{-0.3cm} % ← reduce espacio antes de la figura
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{Diagrama de secuencia (Dinamico)_Ejemplo 2.png}
+    \caption{Diagrama de Secuencia: Ejemplo 2}
+    \label{fig:diagrama-secuencia}
+\end{figure}
+
+\vspace{0.5cm} % ← espacio después de la figura
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{Diagrama de secuencia (Dinamico)_Ejemplo 4.png}
+    \caption{Diagrama de Secuencia: Ejemplo 4}
+    \label{fig:diagrama-secuencia}
+\end{figure}
+
+\vspace{0.5cm} % ← espacio después de la figura
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{Diagrama de secuencia (Dinamico)_Ejemplo 5.png}
+    \caption{Diagrama de Secuencia: Ejemplo 5}
+    \label{fig:diagrama-secuencia}
+\end{figure}
+
+\vspace{0.5cm} % ← espacio después de la figura
+
+\end{document}
+
+
 
 \section{Resultados} %Mediante capturas de pantalla y una breve descripción seguida de la captura se presentan los resultados finales de su aplicación.
 \subsection*{Archivos}
