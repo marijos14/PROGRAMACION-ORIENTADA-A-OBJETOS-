@@ -52,15 +52,15 @@ La aplicación desarrollada permite la creación, lectura y sobreescritura de ar
 Es la clase principal en la que se imprime un menú con las e opciones disponibles para trabajar con archivos de texto. Cada opción a excepción de la de salir en la que solo se muestra un mensaje, llama un función de tipo privada para realizar la operación en cuestión, ofreciendo así un código más organizado.
 
 \subsubsection{Funciones:}
-\subsubsubsection{crearYEscribirArchivo()}
+\subsubsection*{crearYEscribirArchivo()}
 La función tiene el propósito de crear un archivo de tipo \texttt{.txt} y permitirle al usuario ingresar el contenido, donde el contenido admitido solo son Strings. Una vez que se confirma que el nombre del archvio no es \texttt{NULL} o vacío, utiliza una lista de Strings para agregar las lineas escritas y termina una vez que detecta que se escribión \texttt{FIN}.\\
 
 Las líneas escritas en la lista son agregadas a un archivo \textbf{FILE} donde se implementa manejo de errores al poner el bloque de código dentro de un try/catch para cubrir el caso en el que ocurra un error al guardar el archivo.
 
-\subsubsubsection{leerArchivoExistente()}
+\subsubsection*{leerArchivoExistente()}
 La función tiene el propósito de leer el contenido de un archivo que se busca a través de una ruta proporcionada por el usuario, una vez que se comprueba que la ruta es válida se implementa un \texttt{try} para comprobar la existencia del archivo con \texttt{existsSync()}. Si el archivo existe, el contenido se lee como cadena y se imrpime en consola.
 
-\subsubsubsection{sobrescribirArchvio()}
+\subsubsection*{sobrescribirArchvio()}
 La función tiene el propósito de buscar un archivo a través de una ruta proporcionada por el usuario, donde se verifica la validez de la ruta y la existencia del archivo que se está buscando. Se lanza un mensajde de confirmación para la sobreescritura del archivo, en caso de ingresar \texttt{SI} se continua con la sobreescritura, guardando las nuevas líneas de texto en la lista \texttt{nuevasLineas[]}, cuando se detecte la palabra \texttt{FIN} se implementa un \texttt{try/catch} para ingresar el nuevo texto al archivo, mandando un mensaje de error en caso de que falle la operación,
 
 
@@ -85,7 +85,7 @@ En este ejemplo se implementa una comunicación bidireccional entre dos isolates
 Este último ejemplo muestra el caso de ejecución del ejemplo 4 donde se realiza la sumatoria, pero ahora realizando todo en un solo hilo mostrando que al final el tiempo de ejecución es despreciable, pero recordando que la utildiad de los hilos está en la eficiencia de la ejecución y la optimización de recursos.
 
 \subsection{Patrones de diseño}
-La implementación se estructuró siguiendo el patrón de arquitectura Modelo-VistaControlador, organizando el código en tres capas principales.
+La implementación se estructuró siguiendo el patrón de arquitectura Modelo-Vista-Controlador, organizando el código en tres capas principales.
 
 \subsubsection{Capa de modelo (Clases Pokemon y Ataque)}
 La clase Pokemon modela las características base de los pokemonen, posee atributos finales como nombre, nivel y tipo, además de atributos calculados dinámicamente como vida y velocidad. En el constructor, se utiliza la clase Random para asignar valores aleatorios a estas estadísticas basándose en el nivel del pokemon. Se implementaron las subclases PokemonFuego y PokemonHierba, las cuales heredan de Pokemon e inicializan el tipo específico mediante la llamada al constructor de la superclase con el método super.\\
@@ -98,7 +98,7 @@ Se definió una clase abstracta CombateView, que establece los métodos necesari
 \subsubsection{Capa de controlador (Clase CombateController)}
 La clase CombateController es quien gestiona el flujo del programa. Cuenta con un atributo de tipo CombateView para comunicarse con la interfaz. Su lógica central reside en el método iniciarCombate, el cual recibe a los pokemones y gestiona el combate dentro de un ciclo while que se mantiene activo mientras la vida de ambos pokemones sea mayor a cero.\\
 
-Dentro de este ciclo, se determina el orden de los turnos comparando el atributo velocidad de cada pokemon, en caso de empate, se utiliza Random para decidir aleatoriamente quién ataca primero. El cálculo del daño se realiza con el método privado \_atacar, donde se evalúa la efectividad de tipos verificando si el tipo del ataque tiene ventaja contra el tipo del defensor, asignando un multiplicador de 2.0 para ataques "súper efectivos" o de 0.5 para "poco efectivos". Finalmente, se actualiza el estado del defensor y se notifica a la vista.
+Dentro de este ciclo, se determina el orden de los turnos comparando el atributo velocidad de cada pokemon, en caso de empate, se utiliza Random para decidir aleatoriamente quién ataca primero. El cálculo del daño se realiza con el método privado \_atacar, donde se evalúa la efectividad de tipos verificando si el tipo del ataque tiene ventaja contra el tipo del defensor, asignando un multiplicador de 2.0 para ataques ``súper efectivos'' o de 0.5 para ``poco efectivos''. Finalmente, se actualiza el estado del defensor y se notifica a la vista.
 
 \subsubsection{Método principal (Main)}
 En la función main se realiza la instanciación e inicialización de los componentes. Se crea primero la vista ConsoleCombateView y se usa en el constructor del CombateController. Posteriormente, se instancian los objetos de tipo PokemonFuego y PokemonHierba con sus nombres y niveles, así como un objeto de tipo Ataque. Finalmente, se invoca el método iniciarCombate del controlador, pasando los objetos creados como argumentos para dar inicio a la ejecución del programa.
@@ -114,7 +114,6 @@ En la función main se realiza la instanciación e inicialización de los compon
     \centering
     \includegraphics[width=1\linewidth]{PRACTICA-111213/Reporte/Borradores/Diagrama de secuencia (Dinamico)_Ejemplo 2.png}
     \caption{Diagrama de Secuencia: Ejemplo 2}
-    \label{fig:diagrama-secuencia}
 \end{figure}
 
 
@@ -122,7 +121,6 @@ En la función main se realiza la instanciación e inicialización de los compon
     \centering
     \includegraphics[width=1\linewidth]{PRACTICA-111213/Reporte/Borradores/Diagrama de secuencia (Dinamico)_Ejemplo 4.png}
     \caption{Diagrama de Secuencia: Ejemplo 4}
-    \label{fig:diagrama-secuencia}
 \end{figure}
 
 
@@ -130,11 +128,9 @@ En la función main se realiza la instanciación e inicialización de los compon
     \centering
     \includegraphics[width=.95\linewidth]{PRACTICA-111213/Reporte/Borradores/Diagrama de secuencia (Dinamico)_Ejemplo 5.png}
     \caption{Diagrama de Secuencia: Ejemplo 5}
-    \label{fig:diagrama-secuencia}
 \end{figure}
 
-\vspace{0.5cm} % ← espacio después de la figura
-
+\vspace{0.5cm}
 
 \section{Resultados} %Mediante capturas de pantalla y una breve descripción seguida de la captura se presentan los resultados finales de su aplicación.
 \subsection*{Archivos}
