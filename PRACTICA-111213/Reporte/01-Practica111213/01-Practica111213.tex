@@ -72,20 +72,11 @@ La sintaxis moderna de Dart permite implementar los patrones del \textit{Gang of
 \subsection{Patrón Singleton}
 El patrón Singleton asegura que una clase tenga una única instancia. En Dart, esto se logra elegantemente utilizando un constructor privado y un \textit{factory constructor}.
 
-\begin{lstlisting}[caption=Implementación de Singleton en Dart]
-class Database {
-  // 1. Instancia estática privada
-  static final Database _instance = Database._internal();
-
-  // 2. Constructor privado
-  Database._internal();
-
-  // 3. Factory constructor retorna la instancia existente
-  factory Database() {
-    return _instance;
-  }
-}
-\end{lstlisting}
+\begin{itemize}
+    \item Instancia estática privada
+    \item Constructor privado
+    \item Factory constructor retorna la instancia existente
+\end{itemize}
 
 \subsection{Patrón Observer (Streams)}
 Mientras que en otros lenguajes se implementan interfaces \texttt{Observer} y \texttt{Subject} manualmente, Dart incorpora este patrón de forma nativa a través de los \textbf{Streams}.
@@ -94,9 +85,6 @@ Mientras que en otros lenguajes se implementan interfaces \texttt{Observer} y \t
     \item \textbf{StreamSubscription:} Actúa como el observador que escucha los cambios.
 \end{itemize}
 Este mecanismo es la base de la arquitectura reactiva (BLoC, Provider) utilizada comúnmente en Flutter.
-
-
-
 
 \section{Desarrollo} %Es la descripción de la implementación realizada en el lenguaje de programación, así como las pruebas realizadas para obtener los resultados. No se debe mostrar código, solo describir funciones o la aplicación de los conceptos teóricos. Las pruebas es describir las entradas ingresadas y las salidas obtenidas.
 
@@ -117,7 +105,6 @@ La función tiene el propósito de leer el contenido de un archivo que se busca 
 
 \subsubsection*{sobrescribirArchvio()}
 La función tiene el propósito de buscar un archivo a través de una ruta proporcionada por el usuario, donde se verifica la validez de la ruta y la existencia del archivo que se está buscando. Se lanza un mensajde de confirmación para la sobreescritura del archivo, en caso de ingresar \texttt{SI} se continua con la sobreescritura, guardando las nuevas líneas de texto en la lista \texttt{nuevasLineas[]}, cuando se detecte la palabra \texttt{FIN} se implementa un \texttt{try/catch} para ingresar el nuevo texto al archivo, mandando un mensaje de error en caso de que falle la operación,
-
 
 \subsection{Ejemplos del tema Hilos}
 
@@ -254,13 +241,25 @@ El análisis de los ejemplos de concurrencia facilitó la comprensión de la ges
 Además, la interpretación de los patrones de diseño presentes en la arquitectura del código mostró la importancia de utilizar soluciones ya establecidas para garantizar un diseño extensible y sostenible. La elaboración de los Diagramas UML complementó el proceso, reforzando la habilidad de modelar y documentar sistemas de software complejos y confirmando la comprensión de los conceptos requeridos en esta práctica.
 
 \printbibliography 
+\begin{thebibliography}{9}
 
+\bibitem{dart}
+Google Developers,
+\textit{Dart Language Tour}.
+Disponible en: \url{https://dart.dev/language}
+[Consultado: 26-nov-2025].
 
-\begin{document}
+\bibitem{uml}
+M. Fowler,
+\textit{UML Distilled: A Brief Guide to the Standard Object Modeling Language},
+3rd ed., Addison-Wesley, 2003.
 
-\nocite{*} 
+\bibitem{exception}
+D. van der Linden,
+\textit{Effective Dart: Usage}.
+Disponible en: \url{https://dart.dev/guides/language/effective-dart/usage}
+[Consultado: 26-nov-2025].
 
-\bibliographystyle{ieeetr} 
-
+\end{thebibliography}
 
 \end{document}
