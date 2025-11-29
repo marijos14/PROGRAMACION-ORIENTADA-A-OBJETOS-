@@ -39,6 +39,61 @@
 \end{itemize}
 
 \section{Marco Teórico}
+ \subsection{Archivos}
+En Dart, la manipulación del sistema de archivos se gestiona principalmente a través de la librería \texttt{dart:io}. Esta librería provee clases como \texttt{File} y \texttt{Directory} para interactuar con el sistema operativo.
+
+\subsection{Asincronía en I/O}
+Un concepto crítico en Dart es que las operaciones de Entrada/Salida (I/O) deben ser, preferentemente, \textbf{no bloqueantes}. Dado que Dart es \textit{single-threaded} en su ejecución principal, leer un archivo grande de manera síncrona congelaría la interfaz de usuario.
+\begin{itemize}
+    \item \textbf{Síncrono:} \texttt{file.readAsStringSync()} (Bloquea el hilo).
+    \item \textbf{Asíncrono:} \texttt{file.readAsString()} (Retorna un \texttt{Future}).
+\end{itemize}
+
+El uso de las palabras reservadas \texttt{async} y \texttt{await} permite escribir código asíncrono que se lee como si fuera síncrono, facilitando el manejo de excepciones y el flujo lógico.
+
+\section{Hilos y Concurrencia (Isolates)}
+A diferencia de Java, donde se crean múltiples \textit{Threads} que comparten el mismo espacio de memoria, Dart utiliza un modelo de aislamiento basado en el \textbf{Event Loop} y los \textbf{Isolates}.
+
+\subsection{El Event Loop vs. Threads}
+Dart ejecuta el código en un único hilo principal impulsado por un bucle de eventos (\textit{Event Loop}). Para tareas concurrentes ligeras (como esperar una respuesta HTTP o leer un archivo), no se crean nuevos hilos del sistema operativo; simplemente se programan en el Event Loop.
+
+\subsection{Isolates}
+Cuando se requiere procesamiento pesado (CPU-bound) que podría bloquear el Event Loop, Dart utiliza \textbf{Isolates}.
+\begin{itemize}
+    \item Cada Isolate tiene su propio espacio de memoria (Heap).
+    \item \textbf{No hay memoria compartida:} Esto elimina la necesidad de \textit{locks} complejos y evita condiciones de carrera (\textit{race conditions}).
+    \item La comunicación entre el hilo principal y un Isolate se realiza mediante paso de mensajes (\textit{message passing}) a través de puertos (\textit{Ports}).
+\end{itemize}
+
+
+\section{Patrones de Diseño en Dart}
+La sintaxis moderna de Dart permite implementar los patrones del \textit{Gang of Four} (GoF) de manera más concisa, e incluso algunos están integrados en el lenguaje.
+
+\subsection{Patrón Singleton}
+El patrón Singleton asegura que una clase tenga una única instancia. En Dart, esto se logra elegantemente utilizando un constructor privado y un \textit{factory constructor}.
+
+\begin{lstlisting}[caption=Implementación de Singleton en Dart]
+class Database {
+  // 1. Instancia estática privada
+  static final Database _instance = Database._internal();
+
+  // 2. Constructor privado
+  Database._internal();
+
+  // 3. Factory constructor retorna la instancia existente
+  factory Database() {
+    return _instance;
+  }
+}
+\end{lstlisting}
+
+\subsection{Patrón Observer (Streams)}
+Mientras que en otros lenguajes se implementan interfaces \texttt{Observer} y \texttt{Subject} manualmente, Dart incorpora este patrón de forma nativa a través de los \textbf{Streams}.
+\begin{itemize}
+    \item \textbf{StreamController:} Actúa como el sujeto que emite eventos.
+    \item \textbf{StreamSubscription:} Actúa como el observador que escucha los cambios.
+\end{itemize}
+Este mecanismo es la base de la arquitectura reactiva (BLoC, Provider) utilizada comúnmente en Flutter.
 
 
 
@@ -198,5 +253,14 @@ La identificación de las clases y métodos de entrada/salida de datos evidenci�
 El análisis de los ejemplos de concurrencia facilitó la comprensión de la gestión de hilos, mostrando cómo se estructuran las tareas para un procesamiento eficiente y simultáneo.\\
 Además, la interpretación de los patrones de diseño presentes en la arquitectura del código mostró la importancia de utilizar soluciones ya establecidas para garantizar un diseño extensible y sostenible. La elaboración de los Diagramas UML complementó el proceso, reforzando la habilidad de modelar y documentar sistemas de software complejos y confirmando la comprensión de los conceptos requeridos en esta práctica.
 
-\printbibliography %Agregar las referencias en bib y mandarlas llamar en cada sección. Ejemplo de cita: ~\cite{10.5555/576122}
+\printbibliography 
+
+
+\begin{document}
+
+\nocite{*} 
+
+\bibliographystyle{ieeetr} 
+
+
 \end{document}
