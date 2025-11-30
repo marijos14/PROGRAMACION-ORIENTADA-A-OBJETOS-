@@ -17,7 +17,7 @@ class Pokemon {
     required this.nivel,
     required this.tipo,
     required this.imagen,
-  })  : vida = 1000.0 + ((_random.nextDouble() * 20 + 10) * nivel),
+  })  : vida = 300.0 + ((_random.nextDouble() * 20 + 10) * nivel),
         velocidad = (_random.nextDouble() * 3 + 1) * nivel;
 }
 

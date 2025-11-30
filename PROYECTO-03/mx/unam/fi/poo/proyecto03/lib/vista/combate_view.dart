@@ -25,7 +25,7 @@ class FlutterCombateView extends ChangeNotifier implements CombateView {
 
   @override
   void mostrarInformacionPokemon(Pokemon p) {
-    _append("--> ${p.nombre} (Nivel ${p.nivel}) | HP: ${p.vida.toInt()} | Velocidad: ${p.velocidad.toInt}");
+    _append("--> ${p.nombre} (Nivel ${p.nivel}) | HP: ${p.vida.toInt()} | Velocidad: ${p.velocidad.roundToDouble()}");
   }
 
   @override
