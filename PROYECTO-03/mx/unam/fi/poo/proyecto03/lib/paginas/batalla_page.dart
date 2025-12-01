@@ -15,7 +15,7 @@ class BatallaPage extends StatefulWidget {
   State<BatallaPage> createState() => _BatallaPageState();
 }
 
-class _BatallaPageState extends State<BatallaPage> {
+  class _BatallaPageState extends State<BatallaPage> {
   late FlutterCombateView flutterView;
   late CombateController controller;
   final ScrollController _scrollController = ScrollController();
@@ -83,9 +83,7 @@ class _BatallaPageState extends State<BatallaPage> {
 
   void ejecutarTurno(Ataque ataque) {
     controller.iniciarTurnoFlutter(widget.jugador, widget.rival, ataque);
-    setState(() {
-      mostrandoAtaques = false;
-    });
+    setState(() => mostrandoAtaques = false);
   }
 
   @override
@@ -102,7 +100,8 @@ class _BatallaPageState extends State<BatallaPage> {
           child: Container(color: Colors.black, height: 4.0,),
         ),
       ),
-      body: Column(
+      body: SafeArea(
+        child: Column(
         children: [
           _buildPokemonInfo(widget.rival, isRival: true),
 
@@ -134,18 +133,10 @@ class _BatallaPageState extends State<BatallaPage> {
           
           const SizedBox(height: 10),
 
-          Container(
-            height: 180,
-            decoration: const BoxDecoration(
-              border: Border(top: BorderSide(color: Colors.black, width: 4))
-            ),
-            padding: const EdgeInsets.all(10),
-            child: mostrandoAtaques 
-              ? _buildListaAtaques() 
-              : _buildBotonesPrincipales(),
-          ),
         ],
       ),
+      ),
+      bottomNavigationBar: SafeArea(child: buildBottomBar()),
     );
   }
 
@@ -192,10 +183,10 @@ class _BatallaPageState extends State<BatallaPage> {
   }
 
   Widget _imagenPokemon(Pokemon p) {
-    return Container(
-      height: 500, 
-      width: 500,
-      child: p.vida > 0 
+    return SizedBox(
+      height: 130,
+      width: 130,
+      child: p.vida > 0
           ? Image.network(p.imagen, fit: BoxFit.contain)
           : const Opacity(opacity: 0.3, child: Icon(Icons.close, size: 80, color: Colors.black)),
     );
@@ -241,6 +232,58 @@ class _BatallaPageState extends State<BatallaPage> {
       ],
     );
   }
+
+  // bottomNavigationBar con los botones principales
+  Widget buildBottomBar() {
+    if (mostrandoAtaques == true) {
+      return _buildBarraAtaques();
+    }
+
+    return Container(
+      constraints: const BoxConstraints(minHeight: 60, maxHeight: 70),
+      decoration: const BoxDecoration(
+        border: Border(top: BorderSide(color: Colors.black, width: 4)),
+        color: Colors.white,
+      ),
+      padding: const EdgeInsets.all(10),
+      child: _buildBotonesPrincipales(),
+    );
+  }
+
+  Widget _buildBarraAtaques() {
+    return Container(
+      height: 72,
+      margin: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: Colors.black, width: 4),
+        borderRadius: BorderRadius.circular(6),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: widget.jugador.ataques.map((a) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    child: _retroButton(
+                      a.nombre.toUpperCase(),
+                      () => ejecutarTurno(a),
+                      colorFondo: Colors.white,
+                    ),
+                  );
+                }).toList(),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
 
   Widget _buildListaAtaques() {
     return Row(
