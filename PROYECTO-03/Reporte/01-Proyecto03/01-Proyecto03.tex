@@ -25,7 +25,7 @@
 \end{titlepage}
 
 \tableofcontents
-\clearpage
+\clearpage 
 
 \section{Introducción} %Este apartado debe abordar los siguientes puntos:
 
@@ -40,15 +40,71 @@
 
 \section{Marco Teórico}
 
-\subsection{Tema 1}
 
-\subsection{Tema 2}
+\subsection{Dart}
+Dart es un lenguaje de programación moderno, desarrollado por Google, que combina el poder de la programación orientada a objetos con la facilidad y eficiencia de los lenguajes de programación basados en scripts [1].
 
-\subsection{Tema 3}
+\subsection{Clases y Objetos}
+Una clase es una plantilla que define atributos y comportamientos, mientras que un objeto es una instancia concreta de dicha clase. En Dart, las clases permiten representar entidades del sistema como Pokémon o ataques, y facilitan la modularidad del código [2].
 
-\subsection{Tema 4}
+\subsection{Herencia y Clases Abstractas}
+Son los mecanismos que permiten crear jerarquías donde una clase base define
+comportamientos comunes que son extendidos y concretados por subclases específicas.
+Esto facilita la reutilización de código y el polimorfismo [3].
 
-\subsection{Tema 5}
+\subsection{Polimorfismo}
+El polimorfismo permite que un mismo método pueda tener comportamientos diferentes dependiendo del objeto que lo invoque. En el sistema de batalla, ataques de distintos tipos pueden sobrescribir métodos para calcular daño de forma específica.
+
+\subsection{Encapsulamiento}
+Consiste en ocultar los detalles internos de una clase y exponer solo lo necesario mediante métodos públicos. Esto permite gestionar de forma segura atributos como puntos de salud (HP) o velocidad, evitando modificaciones no controladas.
+
+\subsection{Constructores y Parámetros Nombrados}
+Los constructores permiten inicializar objetos y, con los parámetros nombrados, Dart facilita la legibilidad y claridad al crear entidades complejas como ataques o Pokémon con múltiples atributos.
+
+\subsection{Colecciones y Listas}
+Dart proporciona listas dinámicas que permiten almacenar colecciones de objetos, como los movimientos de un Pokémon.
+
+\subsection{Manejo de Estados y Lógica de Negocio}
+La lógica de turnos, aplicación de daño, cambios de estado y verificación de condiciones de victoria se implementan mediante métodos dentro de las clases del sistema. El uso de estructuras condicionales y funciones permite controlar cada etapa del combate.
+
+\subsection{Uso de la Biblioteca \texttt{dart:math}}
+Se emplea para generar valores aleatorios en ataques, o variaciones en el daño, mediante la clase \texttt{Random}.
+
+\subsection{Flutter}
+Flutter es un \textit{framework} basado en widgets, componentes visuales inmutables que describen la estructura de la interfaz. Cada pantalla o elemento gráfico (selección de ataques, barra de vida, menús) se construye con widgets [4].
+
+\textbf{Stateful Widgets.}
+Se utilizan cuando la interfaz debe reaccionar a cambios en el estado interno, como la actualización del HP o el avance del combate por turnos.
+
+\textbf{Gestión de Estado.}
+El método \texttt{setState()} permite actualizar variables y reflejar cambios en la interfaz. Esto es fundamental para mostrar en tiempo real la vida restante, los mensajes de combate o la disponibilidad de acciones.
+
+\subsection{Mecánicas de Combate Pokémon}
+
+\textbf{HP (Health Points):}
+``Es la condición física del Pokémon, representada con un valor
+numérico. Estos son reducidos normalmente mediante los ataques del oponente
+en combate, los efectos del veneno, las quemaduras, o varios climas entre otros
+medios'' [5].
+
+\textbf{Velocidad:}
+``La velocidad es la propiedad del Pokémon de atacar, antes o después,
+que el oponente. A la hora de atacar el Pokémon con un mayor valor de velocidad,
+por lo general, siempre atacará primero''.
+
+\textbf{Efectividad por Tipos.}
+Cada tipo de ataque puede ser más o menos efectivo dependiendo del tipo del oponente.
+Esta efectividad se expresa como multiplicadores: neutral (1), supereficaz (2), poco eficaz (0.5) o sin efecto (0) [6].
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{PROYECTO-03//Reporte//Borradores/TablaTipos.png}
+    \caption{Tabla de tipos de Pokémon. [6]}
+\end{figure}
+
+\subsection{Patrones de Diseño}
+
+\textbf{Modelo–Vista–Controlador (MVC).}
+El patrón MVC separa la lógica de negocio (modelo), la interfaz de usuario (vista) y el flujo de datos (controlador). En Flutter, esta separación se logra mediante la distribución de clases y widgets, permitiendo un proyecto organizado, escalable y sostenible [7].
 
 \section{Desarrollo} %Es la descripción de la implementación realizada en el lenguaje de programación, así como las pruebas realizadas para obtener los resultados. No se debe mostrar código, solo describir funciones o la aplicación de los conceptos teóricos. Las pruebas es describir las entradas ingresadas y las salidas obtenidas.
 
@@ -138,9 +194,32 @@
     \caption{Pantalla de batalla, fin de la batalla con los resultados correspondientes.}
 \end{figure}
 
-\section{Conclusiones} %Se presenta un análisis de los resultados obtenidos, donde se destaca la importancia de la aplicación de los conceptos teóricos para resolver el problema. No es describir si les gustó la actividad o no. No es decir qué se obtuvo de la práctica. No es describir lo que fue difícil.
+\section{Conclusiones}
 El desarrollo de este proyecto permitió integrar de manera efectiva el paradigma de la Programación Orientada a Objetos con la lógica de desarrollo de aplicaciones en Flutter. Se comprobó que el uso de clases abstractas y herencia es esencial para gestionar la diversidad de los elementos de un programa sin duplicar código, permitiendo que el sistema sea escalable y sostenible.
 
 La implementación de la tabla de tipos y el cálculo de daño evidenció la importancia de centralizar las reglas en valores finales para evitar inconsistencias en el estado de la batalla. Además, la gestión de turnos basada en la velocidad reforzó la comprensión del flujo de control y la manipulación de objetos en tiempo de ejecución. Finalmente, el uso de Flutter y el patrón de diseño MVC demostró cómo la programación orientada a objetos sirve como base sólida para construir interfaces gráficas dinámicas, donde cada elemento visual responde a los cambios en los modelos de datos.
-\printbibliography %Agregar las referencias en bib y mandarlas llamar en cada sección. Ejemplo de cita: ~\cite{10.5555/576122}
+section*{Referencias}
+\begin{thebibliography}{9}
+
+\bibitem{dart}
+Google. \textbf{A Tour of the Dart Language}. URL: \url{https://dart.dev/language}
+
+\bibitem{dartClasses}
+Dart Language Documentation. \textbf{Classes}. Nov. 2025. URL: \url{https://dart.dev/language/classes}
+
+\bibitem{dartExtend}
+Dart Language Documentation. \textbf{Object-Oriented Programming in Dart}. Nov. 2025. URL: \url{https://dart.dev/language/extend}
+
+\bibitem{flutterArch}
+Flutter Documentation. \textbf{Architectural Overview}. Dic. 2025. URL: \url{https://docs.flutter.dev/resources/architectural-overview}
+
+\bibitem{pokeStats}
+Wikidex. \textbf{Mecánica - Características}. Nov. 2025. URL: \url{https://www.wikidex.net/wiki/Caracter%C3%ADsticas}
+
+\bibitem{pokeTypes}
+Wikidex. \textbf{Mecánica - Tipos}. Nov. 2025. URL: \url{https://www.wikidex.net/wiki/Tipo#Efectividades_de_los_tipos}
+
+\bibitem{mvc}
+Rhm, F. (2023). \textbf{Understanding MVC Architecture in Flutter: A Comprehensive Guide with Examples}. Medium. URL: \url{https://medium.com/@Faiz_Rhm/understanding-mvc-architecture-in-flutter-a-comprehensive-guide-with-examples-5d1a372c7eaf}
+\end{thebibliography}
 \end{document}
