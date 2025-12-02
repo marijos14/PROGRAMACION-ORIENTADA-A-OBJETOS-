@@ -31,11 +31,11 @@
 
 \begin{itemize}
     \item \textbf{Planteamiento del problema:}\\ %Se hace una descripción del problema a resolver.
-    
+    Desarrollar una aplicación que simule el sistema de batallas de Pokémon. La aplicación debe gestionar un combate por turnos entre usuario y rival, determinando el orden de ataque con base en la velocidad y finalizando el encuentro cuando la salud de alguno llegue a cero. Asimismo, el sistema debe implementar la lógica de efectividad de tipos de acuerdo con la tabla de tipos y ofrecer una interfaz gráfica interactiva que permita seleccionar ataques y visualizar el estado actual del combate.
     \item \textbf{Motivación:}\\ %Se describe por qué es necesario dar solución al problema.
-    
+    La simulación de un sistema de batalla por turnos representa un escenario ideal para la implementación avanzada de POO, ya que requiere la interacción constante entre múltiples objetos con estados complejos. Utilizar Flutter permite aplicar lógica de backend y comprender cómo los objetos se vinculan con una interfaz gráfica reactiva, usando el patrón de diseño MVC y acercando el desarrollo a un entorno de producción de software moderno y funcional.
     \item \textbf{Objetivos:}\\ %Lo que se espera obtener al darle solución al problema.
-
+    Implementar una jerarquía de clases que modele correctamente las entidades del juego aplicando conceptos fundamentales como herencia, polimorfismo, clases abstractas y el patrón de diseño MVC, así como integrar la lógica con la interfaz de usuario mediante el manejo de estados en Flutter, asegurando que las reglas del juego se ejecuten de manera consistente y transparente para el usuario.
 \end{itemize}
 
 \section{Marco Teórico}
@@ -65,8 +65,35 @@
 \subsection*{Diagrama de secuencia (UML dinámico)}
 
 \section{Resultados} %Mediante capturas de pantalla y una breve descripción seguida de la captura se presentan los resultados finales de su aplicación.
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{PROYECTO-03/Reporte/Borradores/Eleccion.png}
+    \caption{Pantalla inicial donde se escoge el Pokémon del usuario y el Pokémon rival.}
+\end{figure}
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{PROYECTO-03/Reporte/Borradores/Batalla1.png}
+    \caption{Pantalla de batalla inicial; batalla de exhibición.}
+\end{figure}
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{PROYECTO-03/Reporte/Borradores/Ataques.png}
+    \caption{Pantalla de batalla, menú de ataques (mostrando solo los ataques disponibles del Pokémon elegido).}
+\end{figure}
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{PROYECTO-03/Reporte/Borradores/Logbatalla.png}
+    \caption{Pantalla de batalla, historial de batalla que muestra los movimientos realizados por ambos pokemones.}
+\end{figure}
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{PROYECTO-03/Reporte/Borradores/Batalla2.png}
+    \caption{Pantalla de batalla, fin de la batalla con los resultados correspondientes.}
+\end{figure}
 
 \section{Conclusiones} %Se presenta un análisis de los resultados obtenidos, donde se destaca la importancia de la aplicación de los conceptos teóricos para resolver el problema. No es describir si les gustó la actividad o no. No es decir qué se obtuvo de la práctica. No es describir lo que fue difícil.
+El desarrollo de este proyecto permitió integrar de manera efectiva el paradigma de la Programación Orientada a Objetos con la lógica de desarrollo de aplicaciones en Flutter. Se comprobó que el uso de clases abstractas y herencia es esencial para gestionar la diversidad de los elementos de un programa sin duplicar código, permitiendo que el sistema sea escalable y sostenible.
 
+La implementación de la tabla de tipos y el cálculo de daño evidenció la importancia de centralizar las reglas en valores finales para evitar inconsistencias en el estado de la batalla. Además, la gestión de turnos basada en la velocidad reforzó la comprensión del flujo de control y la manipulación de objetos en tiempo de ejecución. Finalmente, el uso de Flutter y el patrón de diseño MVC demostró cómo la programación orientada a objetos sirve como base sólida para construir interfaces gráficas dinámicas, donde cada elemento visual responde a los cambios en los modelos de datos.
 \printbibliography %Agregar las referencias en bib y mandarlas llamar en cada sección. Ejemplo de cita: ~\cite{10.5555/576122}
 \end{document}
