@@ -108,13 +108,83 @@ El patrón MVC separa la lógica de negocio (modelo), la interfaz de usuario (vi
 
 \section{Desarrollo} %Es la descripción de la implementación realizada en el lenguaje de programación, así como las pruebas realizadas para obtener los resultados. No se debe mostrar código, solo describir funciones o la aplicación de los conceptos teóricos. Las pruebas es describir las entradas ingresadas y las salidas obtenidas.
 
-\subsection*{Clase 1}
+La aplicación dentro del paquete \texttt{mx.unam.fi.poo.p910} permite la ejecución de un programa que simula un juego de batalla Pokemón donde se aplicaron los conceptos principales de programación orientada a objetos tales como herencia, polimorfismo, manejo de errores y el patrón de diseño \texttt{MVC}. A continuación de explica a detalle el funcionamiento de cada parte del código.
 
-\subsection*{Clase 2}
+\subsection{Main}
+Es el punto de partida del progama, importa la librería \texttt{material} para el uso de widgets y \texttt{seleccion\_page} de \texttt{paginas} siendo la primera pagina que se mostrará en la ejecución, poniendo como widget raíz a \texttt{MartialApp}.
 
-\subsection*{Clase 3}
+\subsection{Modelo}
+En el modelo se encapsula la información de la aplicación y se define la lógica con la que se manipulan los datos, por lo que en esta capa se definieron los siguientes archivos:
 
-\subsection*{Clase 4}
+\subsubsection{Pokemon}
+Se define la clase \textbf{Pokemon} con los atributos básicos que heredan los pokemon de todos los tipos, siendo estos: nombre, nivel, tipo, imagen, velocidad, vida, su lista de ataques y se define un generador aleatorio \texttt{Random} para asignar diferentes valores de velocidad y vida a cada pokemon, haciendo al juego más dinámico variando los valores de las estadísticas de los Pokemon. Finalmente se genera una lista \texttt{listaPokemones} que genera un pokemon de cada tipo siendo los pokemon que estarán disponibles dentro de la aplicación.
+
+\subsubsection{Ataques}
+Se genera la clase \textbf{Ataque} que incluye los atributos de nombre, tipo y potencia, siendo generadas posteriormente clases hijas que que definen el tipo de ataque, así se crean listas que contengas 3 ataques de un tipo en específico permitiendo asignar movimientos coherentes a los pokemon de la clase \textbf{Pokemon}.
+
+\subsection{Vista}
+El objetivo de los objetos defindos en la capa de vista es mostrar la información del objeto del modelo y habilitar la edición de información enviando la información al controlador, es así que en esta capa se controla el cómo se muestra la información al usuairo creando la clase abstracta \textbf{CombateView} en la que sus métodos señalan los mensajes que deben mostrase cuando ocurra una batalla, tales como \texttt{mostrarSuperEfectivo()}, \texttt{mostrarPocoEfectivo()}, \texttt{mostrarNoAfecta()}, etc. 
+
+Los métodos son definidos en la clase \textbf{FLutterCombateView} donde todos lo métodos se apoyan en \texttt{\_append} que usa \texttt{notifyListeners()} y un atributo \texttt{log} para guardar el texto de lo que ocurre en el combate.
+0
+\subsection{Controlador}
+El controlador hace de intermediaro entre la capa del modelo y la capa de la vista, por lo que esta capa se encarga de decidir los efectos de las acciones en el combate y comunicárselo a la vista. Para esto se define un map \textbf{tablaTipos} donde una clave es el tipo de ataque y la otra el tipo del defensor tomando como valor un multiplicador que se define para el daño que un pokemón le puede causar a otro dependiendo del tipo de ambos. Este map es usado en la funcion \textbf{\_atacar()} para calcular el daño multiplicando el multiplicador por la potencia del ataque, mostrando el daño hecho y el mensaje definido en \texttt{view} sobre la efectividad del ataque.
+
+\subsubsection{CombateController}
+La clase \textbf{CombateController} coordina la secuencia de los turnos con ayuda del método \texttt{iniciarTurnoFlutter()} que verifica la vida de los dos jugadores y en base al atributo de velocidad ordena los turnos, haciendo uso de la función \texttt{\_atacar()} y de los mensajes definidos en \texttt{combate\_view}.
+
+\subsection{Páginas}
+En esta carpeta se precisan las dos páginas que se mostrarán en la aplicación, siendo la de selección de pokemones y la combate, detallando cada una a continuación.
+
+\subsubsection{batalla\_page}
+Esta clase implementa la pantalla que visualiza el usuario en el sistema de combate de la aplicación por lo que gestiona la interfaz gráfica y la interacción con el usuari, para esto la clase se extiende de StatefulWidget ya que la interfaz cambia con el tiempo, se definen los pokemones.\\
+
+Se crea un método \texttt{initState()} que crea el controlador del combate y la vista de la batalla, añadiendo un metodo escucha para \texttt{flutterView} que notifica a setState en caso de algún cambio para bajar el scrollbar hasta el final. Empleando también una función \texttt{\_reproducirMusica} que usa un try/cath y un \texttt{async} para reproducir una canción cuando se abra la página.\\
+
+Para la interfaz se declara el método \texttt{\_getIconoTipo()} que recibe un tipo de pokemon y devuelve un tipo de icono a usar. Posteriormente se declara un método \texttt{ejecutarTurno()} que llama al controlador de combate para procesar el turno una vez que el usuario ha usado un ataque.
+
+Con respecto a los widwets usados para la interfaz se tienen los siguientes:
+\begin{itemize}
+    \item build()\\
+    Es el método responsable de generar la pantalla de batalla, para organizar la estrucutra de la pantalla se utiliza un \texttt{Scaffold} , una \texttt{appBar} que señala la batalla pokemon, el registro de la batalla contenido dentro de \texttt{SingleChildScrollView} y un \texttt{bottomNavigationBar} que alterna entre los botones principales y los de ataque en la parte ingerior de la pantalla.
+    \item buildPokemonInfo()\\
+    El método contruye la tarjeta en la que se muestra la información del pokemón usado y el rival, tornando la vida de rojo cuando es menor a los 500 puntos de vida y organizando la información a través de \texttt{Row} para mostrar la información del rival del lado derecho y la del pokemon propio del lado izquiero.
+    \item imagenPokemon()\\
+    El método se encarga de mostrar la visualización de la imagen del pokemon, decidiendo su tamaño, utilizando SizedBox y mostrando una equis de color opaco cuando los puntos de vida del pokemon sean menores a 0.
+    \item retroButton()\\
+    El método encapsula el estilo de creación de botones, recibiendo el texto y la función que hará el botón.
+    \item buildBotonesPrincipales()\\
+    El método revisa la vida de los pokemon, siendo el caso que si los dos siguen con vida se da la opción de huir o luchar, y en caso de que el pokemon propio haya muerto solo se da la opción de ir hacia atrás, generando la página de selección.
+    \item buildBottomBar()\\
+    El método construye una barra inferior que muestra los ataques cuando la variable \texttt{mostrarAtaques} es verdadera, es decir se ha presionado el botón de Lucha, de lo contrario se muestran los botones principales.
+    \item buildBarraAtaques()\\
+    El método construye la barra donde se muestran los ataques diponibles del pokemon, utilizando el método del botón retro para ejecutar los ataques.
+    \item buildListaAtaques()
+    El método construye la lista completa de ataques del pokémon del jugador cuando se elige la opción Lucha. Para organizar su contenido, utiliza un Row y muestra cada ataque como un elemento independiente lo que ejecuta el ataque mediante ejecutarTurno().
+\end{itemize}
+
+\subsubsection{seleccion\_page}
+Es una clase definida como un StatefulWidget, es el punto de entrada a la interacción
+lógica del usuario y se encarga de gestionar el flujo de elección de los combatientes antes
+de iniciar la batalla.\\
+
+Se construyó mediante un Scaffold que aloja un GridView.builder, el cual renderiza la
+colección de objetos Pokemon disponibles en la lista del modelo. Cada celda de la rejilla
+encapsula la información del Pokémon (imagen, nombre y tipo) dentro de un widget Card,
+para una presentación organizada y uniforme.\\
+
+La lógica de selección se implementó mediante el manejo de estado interno de la clase.
+Se declaró un atributo nullable Pokemon? jugadorSeleccionado, el cual determina el
+comportamiento del evento onTap detectado por el GestureDetector. El funcionamiento se
+divide en dos fases: en la primera, si el atributo es nulo, el objeto seleccionado se asigna al
+usuario y se invoca a setState() para actualizar la interfaz, cambiando el color de la tarjeta
+a verde para indicarle al usuario que el Pokémon fue seleccionado, además, la barra
+superior modifica su título según la fase de selección en la que se encuentre el usuario.\\
+
+Después, la transición hacia el combate se gestiona en la segunda fase de interacción. Al
+detectar una segunda selección, la clase instancia la navegación mediante el método
+Navigator.push, aquí es donde se crea la BatallaPage, inicializándola con las referencias
+tanto del objeto jugadorFinal como del rivalFinal.
 
 \subsection*{Diagrama de clases (UML estático)}
 
